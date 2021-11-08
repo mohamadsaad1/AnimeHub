@@ -5,10 +5,10 @@ function animeSearch(req, res) {
   axios.get(`https://api.jikan.moe/v3/search/anime?q=${req.body.query}`)
 
   .then(response => {
-    console.log(response.data.results)
+    console.log(response.data.results[0])
     res.render('search',{
       title: 'title',
-      anime: response.data.results,
+      anime: response.data.results[0],
 
     })
   })
