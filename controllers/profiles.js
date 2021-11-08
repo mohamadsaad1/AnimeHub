@@ -13,6 +13,20 @@ function addToWatchList(req, res) {
   })
 }
 
+function aniDex(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    res.render('profiles/aniDex', {
+      title: `${profile.name}'s aniDex`,
+      user: req.user,
+      profile
+    })
+  })
+}
+
+
+
 export{
-  addToWatchList
+  addToWatchList,
+  aniDex,
 }

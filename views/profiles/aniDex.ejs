@@ -1,0 +1,13 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<h1>aniDex</h1>
+<% profile.anime.forEach(anime => { %>
+  <div>
+    <h2><%= anime.title %></h2>
+      <img src="<%= anime.imageUrl %>" alt="<%= anime.title %>">
+    </a>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer') %>
