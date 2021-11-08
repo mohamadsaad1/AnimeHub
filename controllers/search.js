@@ -8,7 +8,7 @@ function animeSearch(req, res) {
     console.log(response.data.results[0])
     res.render('search',{
       title: 'title',
-      anime: response.data.results[0],
+      animes: response.data.results,
 
     })
   })

@@ -14,7 +14,7 @@ const animeSchema = new Schema({
   releaseDate: String,
   genre: String,
   comments: [commentSchema],
-  imagesUrl: String,
+  imageUrl: String,
 }, {
   timestamps: true,
 })
