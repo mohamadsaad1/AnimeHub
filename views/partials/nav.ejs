@@ -8,16 +8,12 @@
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
-      <form action="/animeSearch" method="POST">
-        <input  name= "query" type="text"  placeholder="search for Anime">
-        <button type="submit">search</button>
-      </form>
       <a href="/profiles/<%= user.profile._id%>/anime">my anime</a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
-      </a>
-    <% } %>
-  </nav>
+      <% } else { %>
+        <a href="/auth/google" class="siwg-link">
+          <button type="submit" class="siwg">
+            <img id="siwg-image" alt="Sign in with Google" />
+          </button>
+        </a>
+        <% } %>
+      </nav>

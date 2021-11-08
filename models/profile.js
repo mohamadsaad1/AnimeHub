@@ -11,7 +11,7 @@ author: {type: Schema.Types.ObjectId, ref: 'Profile'}
 
 const animeSchema = new Schema({
   name: String,
-  releaseDate: String,
+  start_date: String,
   genre: String,
   comments: [commentSchema],
   imageUrl: String,
