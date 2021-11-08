@@ -7,8 +7,11 @@ const router = Router()
 router.get('/', function (req, res) {
   res.render('index', { title: 'Home Page', user: req.user ? req.user : null })
 })
-
 router.post('/animeSearch', isLoggedIn, searchCtrl.animeSearch)
+router.get('/animeSearch/:id', isLoggedIn, searchCtrl.aniShow)
+
+
+
 
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {

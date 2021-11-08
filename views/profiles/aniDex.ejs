@@ -1,13 +1,22 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1>aniDex</h1>
-<% profile.animeWatchedList.forEach(anime => { %>
+<h1>Watch List</h1>
+<% profile.animeWatchList.forEach(anime => { %>
+  <div>
+    <h2><%= anime.title %></h2>
+      <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
+  </div>
+<% }) %>
+
+<h1>Completed List</h1>
+<% profile.animeCompletedList.forEach(anime => { %>
   <div>
     <h2><%= anime.title %></h2>
       <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
     </a>
   </div>
 <% }) %>
+
 
 <%- include('../partials/footer') %>

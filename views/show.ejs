@@ -1,0 +1,16 @@
+<%- include('./partials/html-head') %>
+<%- include('./partials/nav') %>
+
+<h2><%= anime.title %></h2>
+<img src="<%= anime.image_url %>" alt="<%= anime.name %>">
+
+<div>
+  <h2>Type: <%= anime.type%> </h2>
+  <h2>Episodes: <%= anime.episodes%> </h2>
+  <h2>Rating: <%= anime.score%> </h2>
+  <h2>Aired: <%= anime.start_date%> </h2>
+  <h2>Rated: <%= anime.rated%> </h2>
+</div>
+
+
+<%- include('./partials/footer') %>

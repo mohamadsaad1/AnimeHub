@@ -24,7 +24,8 @@ const profileSchema = new Schema({
   name: String,
   avatar: String,
   animeCompletedList: [animeSchema],
-  animeWatchedList: [animeSchema],
+  animeWatchList: [animeSchema],
+  anime: [animeSchema],
 }, {
   timestamps: true
 })
