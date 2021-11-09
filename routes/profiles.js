@@ -8,6 +8,7 @@ router.post('/animeComplete', isLoggedIn, profilesCtrl.addToCompletedList)
 router.get('/:id/anime', isLoggedIn, profilesCtrl.aniDex)
 
 router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.delete)
+
 router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.deleteFromCompletedList)
 
 
