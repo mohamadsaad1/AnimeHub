@@ -11,8 +11,7 @@ author: {type: Schema.Types.ObjectId, ref: 'Profile'}
 
 const animeSchema = new Schema({
   name: String,
-  start_date: String,
-  genre: String,
+  rated: Number,
   comments: [commentSchema],
   imageUrl: String,
 }, {
@@ -23,9 +22,8 @@ const animeSchema = new Schema({
 const profileSchema = new Schema({
   name: String,
   avatar: String,
-  animeCompletedList: [animeSchema],
   animeWatchList: [animeSchema],
-  anime: [animeSchema],
+  animeCompletedList: [animeSchema],
 }, {
   timestamps: true
 })
