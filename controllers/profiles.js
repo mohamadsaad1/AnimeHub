@@ -42,7 +42,7 @@ function deleteFromWatchList(req, res) {
     profile.anime.remove(req.params.animeId)
     profile.save()
     .then(() => {
-      res.redirect(`/profiles/${req.user.profile._id}`)
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
     })
   })
   .catch(err => {
@@ -51,9 +51,21 @@ function deleteFromWatchList(req, res) {
   })
 }
 
+function deleteFromCompletedList(req, res) {
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    profile.anime.remove(req.params.animeId)
+    profile.save()
+    .then(() => {
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+    })
+  })
+}
+
 export{
   addToCompletedList,
   addToWatchList,
   aniDex,
   deleteFromWatchList as delete,
+  deleteFromCompletedList
 }
