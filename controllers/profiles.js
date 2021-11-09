@@ -8,7 +8,7 @@ function addToWatchList(req, res) {
     profile.animeWatchList.push(req.body)
     profile.save()
     .then(()=> {
-      res.redirect('/')
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
     })
   })
 }
@@ -20,7 +20,7 @@ function addToCompletedList(req, res) {
     profile.animeCompletedList.push(req.body)
     profile.save()
     .then(()=> {
-      res.redirect('/')
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
     })
   })
 }
