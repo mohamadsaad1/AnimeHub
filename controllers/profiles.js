@@ -35,10 +35,12 @@ function aniDex(req, res) {
     })
   })
 }
-
+function deleteAnime(req,res){
+}
 
 export{
   addToCompletedList,
   addToWatchList,
   aniDex,
+  deleteAnime
 }
