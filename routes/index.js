@@ -13,6 +13,7 @@ router.get('/animeSearch/:id', isLoggedIn, searchCtrl.aniShow)
 
 
 
+
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {
     return next()

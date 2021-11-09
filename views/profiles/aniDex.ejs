@@ -7,6 +7,9 @@
     <h2><%= anime.title %></h2>
       <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
   </div>
+  <form action="/profiles/%>?_method=DELETE" method="POST">
+    <button type="submit">X</button>
+  </form>
 <% }) %>
 
 <h1>Completed List</h1>
@@ -16,6 +19,9 @@
       <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
     </a>
   </div>
+  <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>%>?_method=DELETE" method="POST">
+    <button type="submit">X</button>
+  </form>
 <% }) %>
 
 
