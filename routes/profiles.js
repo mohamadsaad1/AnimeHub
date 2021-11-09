@@ -6,7 +6,8 @@ const router = Router()
 router.post('/anime', isLoggedIn, profilesCtrl.addToWatchList)
 router.post('/animeComplete', isLoggedIn, profilesCtrl.addToCompletedList)
 router.get('/:id/anime', isLoggedIn, profilesCtrl.aniDex)
-router.delete("/:profileId/animeComplete/:id", isLoggedIn, profilesCtrl.deleteAnime)
+
+router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.delete)
 
 
 
