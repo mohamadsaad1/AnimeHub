@@ -12,7 +12,7 @@ router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.delete)
 router.delete("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.deleteFromCompletedList)
 router.get("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.showAnime)
 
-
+router.post("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.createComment)
 
 
 function isLoggedIn(req, res, next) {

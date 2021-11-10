@@ -2,6 +2,7 @@ import { Profile } from "../models/profile.js"
 
 
 function addToWatchList(req, res) {
+  console.log(req.body)
   // Find the profile
   Profile.findById(req.user.profile._id)
   .then(profile => {
@@ -29,15 +30,41 @@ function addToCompletedList(req, res) {
 function showAnime(req, res) {
   Profile.findById(req.params.profileId)
   .then (profile =>{
-  const anime = profile.animeWatchList.find(anim => anim._id.equals (req.params.animeId) )
+  const anime = profile.animeWatchList.find(anim => anim._id.equals (req.params.animeId))
+  let sum = 0
+  anime.comments.forEach(comment => {
+    sum += comment.rating
+  })
+  console.log(anime)
+    const averageCommentScore = sum / anime.comments.length
       res.render('profiles/showAnime', {
             anime,
-            title : "title"
+            title : "title",
+            profile,
+            averageCommentScore
         })
-console.log(anime)
 
   })
 }
+
+
+function createComment(req, res) {
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    const anime = profile.animeWatchList.id(req.params.animeId)
+    anime.comments.push(req.body)
+        profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}/anime/${req.params.animeId}`)
+  })
+  .catch(err => {
+    console.log(err)
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+  })
+}
+
+
+
+
 
 function aniDex(req, res) {
   Profile.findById(req.params.id)
@@ -81,5 +108,6 @@ export{
   aniDex,
   deleteFromWatchList as delete,
   deleteFromCompletedList,
-  showAnime
+  showAnime,
+  createComment
 }
