@@ -1,5 +1,6 @@
 import { Profile } from "../models/profile.js"
 
+
 function addToWatchList(req, res) {
   // Find the profile
   Profile.findById(req.user.profile._id)
@@ -25,6 +26,19 @@ function addToCompletedList(req, res) {
   })
 }
 
+function showAnime(req, res) {
+  Profile.findById(req.params.profileId)
+  .then (profile =>{
+  const anime = profile.animeWatchList.find(anim => anim._id.equals (req.params.animeId) )
+      res.render('profiles/showAnime', {
+            anime,
+            title : "title"
+        })
+console.log(anime)
+
+  })
+}
+
 function aniDex(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -47,6 +61,7 @@ function deleteFromWatchList(req, res) {
   })
 }
 
+
 function deleteFromCompletedList(req, res) {
   Profile.findById(req.user.profile._id)
   .then(profile => {
@@ -58,10 +73,13 @@ function deleteFromCompletedList(req, res) {
   })
 }
 
+
+
 export{
   addToCompletedList,
   addToWatchList,
   aniDex,
   deleteFromWatchList as delete,
-  deleteFromCompletedList
+  deleteFromCompletedList,
+  showAnime
 }

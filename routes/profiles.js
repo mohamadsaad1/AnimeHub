@@ -10,6 +10,7 @@ router.get('/:id/anime', isLoggedIn, profilesCtrl.aniDex)
 router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.delete)
 
 router.delete("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.deleteFromCompletedList)
+router.get("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.showAnime)
 
 
 

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const commentSchema = new Schema({
 content: String,
-author: {type: Schema.Types.ObjectId, ref: 'Profile'}
+owner: {type: Schema.Types.ObjectId, ref: 'Profile'}
 },{
   timestamps: true,
 })
@@ -31,6 +31,7 @@ const profileSchema = new Schema({
   avatar: String,
   animeWatchList: [animeSchema],
   animeCompletedList: [animeSchema],
+
 }, {
   timestamps: true
 })
@@ -38,5 +39,5 @@ const profileSchema = new Schema({
 const Profile = mongoose.model('Profile', profileSchema)
 
 export {
-  Profile
+  Profile,
 }
