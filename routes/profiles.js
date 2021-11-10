@@ -5,14 +5,19 @@ const router = Router()
 
 router.post('/anime', isLoggedIn, profilesCtrl.addToWatchList)
 router.post('/animeComplete', isLoggedIn, profilesCtrl.addToCompletedList)
+
 router.get('/:id/anime', isLoggedIn, profilesCtrl.aniDex)
 
 router.delete("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.delete)
-
 router.delete("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.deleteFromCompletedList)
-router.get("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.showAnime)
 
+
+router.get("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.showAnime)
 router.post("/:profileId/anime/:animeId", isLoggedIn, profilesCtrl.createComment)
+
+
+router.get("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.showCompletedAnime)
+router.post("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.create)
 
 
 function isLoggedIn(req, res, next) {

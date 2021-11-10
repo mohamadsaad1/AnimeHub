@@ -13,7 +13,7 @@
 
 
 <h2>comments</h2>
-<form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>" method="post">
+<form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>" method="post">
     <label for="content-textarea">comment:</label>
     <textarea name="content" id="content-textarea"></textarea>
     <label for="rating-select">Rating:</label>
@@ -57,13 +57,5 @@
     <h3>No comments Yet</h3>
   <% } %>
 </main>
-
-
-
-
-
-
-
-
 
 <%- include('../partials/footer') %>

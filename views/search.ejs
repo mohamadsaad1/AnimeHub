@@ -7,6 +7,11 @@
   <a href="/animeSearch/<%= anime.mal_id %> "> 
     <img src="<%= anime.image_url%>" alt="<%= anime.title %>">
   </a>
+    <h2 hidden>Type: <%= anime.type%> </h2>
+    <h2 hidden>Episodes: <%= anime.episodes%></h2>
+    <h2 hidden>Rating: <%= anime.score%></h2>
+    <h2 hidden>Airing: <%= anime.airing%></h2>
+    <h2 hidden>Synopsis: <%= anime.synopsis%></h2>
 
 <h2>Aired: <%= anime.start_date%></h2>
 

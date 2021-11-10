@@ -14,6 +14,8 @@ function addToWatchList(req, res) {
     })
   })
 }
+
+
 function addToCompletedList(req, res) {
   // Find the profile
   Profile.findById(req.user.profile._id)
@@ -43,9 +45,31 @@ function showAnime(req, res) {
             profile,
             averageCommentScore
         })
-
   })
 }
+
+
+function showCompletedAnime(req, res) {
+  Profile.findById(req.params.profileId)
+  .then (profile =>{
+  const anime = profile.animeCompletedList.find(anim => anim._id.equals (req.params.animeId))
+  let sum = 0
+  anime.comments.forEach(comment => {
+    sum += comment.rating
+  })
+  console.log(anime)
+    const averageCommentScore = sum / anime.comments.length
+      res.render('profiles/showCompletedAnime', {
+            anime,
+            title : "title",
+            profile,
+            averageCommentScore
+        })
+  })
+}
+
+
+
 
 
 function createComment(req, res) {
@@ -61,6 +85,28 @@ function createComment(req, res) {
       res.redirect(`/profiles/${req.user.profile._id}/anime`)
   })
 }
+
+function create(req, res) {
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    const anime = profile.animeCompletedList.id(req.params.animeId)
+    anime.comments.push(req.body)
+        profile.save()
+        res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+  })
+  .catch(err => {
+    console.log(err)
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+  })
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -109,5 +155,7 @@ export{
   deleteFromWatchList as delete,
   deleteFromCompletedList,
   showAnime,
-  createComment
+  createComment,
+  showCompletedAnime,
+  create
 }
