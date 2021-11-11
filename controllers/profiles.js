@@ -54,10 +54,10 @@ function showCompletedAnime(req, res) {
   .then (profile =>{
   const anime = profile.animeCompletedList.find(anim => anim._id.equals (req.params.animeId))
   let sum = 0
+  console.log(anime.comments)
   anime.comments.forEach(comment => {
     sum += comment.rating
   })
-  console.log(anime)
     const averageCommentScore = sum / anime.comments.length
       res.render('profiles/showCompletedAnime', {
             anime,
@@ -78,11 +78,11 @@ function createComment(req, res) {
     const anime = profile.animeWatchList.id(req.params.animeId)
     anime.comments.push(req.body)
         profile.save()
-        res.redirect(`/profiles/${req.user.profile._id}/anime/${req.params.animeId}`)
+        res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
   })
   .catch(err => {
     console.log(err)
-      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+      res.redirect(`/profiles/${req.params.profileId}/anime`)
   })
 }
 
@@ -93,12 +93,12 @@ function deleteComment(req, res) {
     anime.comments.remove({_id: req.params.commentId})
         profile.save()
         .then(() => {
-        res.redirect(`/profiles/${req.user.profile._id}/anime/${req.params.animeId}`)
+        res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
         })
   })
   .catch(err => {
     console.log(err)
-      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+      res.redirect(`/profiles/${req.params.profileId}/anime`)
   })
 }
 
@@ -113,11 +113,11 @@ function create(req, res) {
     const anime = profile.animeCompletedList.id(req.params.animeId)
     anime.comments.push(req.body)
     profile.save()
-    res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+    res.redirect(`/profiles/${req.params.profileId}/animeComplete/${req.params.animeId}`)
   })
   .catch(err => {
     console.log(err)
-    res.redirect(`/profiles/${req.user.profile._id}/anime`)
+    res.redirect(`/profiles/${req.params.profileId}/anime`)
   })
 }
 
@@ -128,12 +128,12 @@ function deleteCompletedComment(req, res) {
     anime.comments.remove({_id: req.params.commentId})
         profile.save()
         .then(() => {
-        res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+        res.redirect(`/profiles/${req.params.profileId}/animeComplete/${req.params.animeId}`)
         })
   })
   .catch(err => {
     console.log(err)
-      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+      res.redirect(`/profiles/${req.params.profileId}/anime`)
   })
 }
 
@@ -144,7 +144,7 @@ function aniDex(req, res) {
     res.render('profiles/aniDex', {
       title: `${profile.name}'s aniDex`,
       user: req.user,
-      profile
+      profile,
     })
   })
 }
