@@ -3,6 +3,10 @@ import * as profilesCtrl from "../controllers/profiles.js"
 
 const router = Router()
 
+
+
+
+
 router.post('/anime', isLoggedIn, profilesCtrl.addToWatchList)
 router.post('/animeComplete', isLoggedIn, profilesCtrl.addToCompletedList)
 
@@ -22,6 +26,11 @@ router.post("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.creat
 
 router.delete("/:profileId/anime/:animeId/:commentId", isLoggedIn, profilesCtrl.deleteComment)
 router.delete("/:profileId/animeComplete/:animeId/:commentId", isLoggedIn, profilesCtrl.deleteCompletedComment)
+
+
+
+
+router.get("/", isLoggedIn, profilesCtrl.index)
 
 
 function isLoggedIn(req, res, next) {

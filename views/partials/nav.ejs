@@ -5,10 +5,12 @@
 <body>
   <nav>
     <% if (user) { %>
+      <a href="/profiles">Profiles</a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
       <a href="/profiles/<%= user.profile._id%>/anime">my anime</a>
+
       <% } else { %>
         <a href="/auth/google" class="siwg-link">
           <button type="submit" class="siwg">

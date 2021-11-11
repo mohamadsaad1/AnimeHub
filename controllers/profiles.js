@@ -138,33 +138,6 @@ function deleteCompletedComment(req, res) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function aniDex(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
@@ -200,6 +173,24 @@ function deleteFromCompletedList(req, res) {
 }
 
 
+function index (req, res) {
+  console.log ("PROFFILLLEESSSS 😍😍😍😍😍😍😍😍😍😍😍😍")
+  Profile.find({})
+  .then(profiles => {
+    res.render("profiles/index", {
+      profiles,
+      title: "profiles"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+
+
+
 
 export{
   addToCompletedList,
@@ -212,5 +203,6 @@ export{
   showCompletedAnime,
   create,
   deleteComment,
-  deleteCompletedComment
+  deleteCompletedComment,
+  index,
 }
