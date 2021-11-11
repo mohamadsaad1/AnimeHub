@@ -6,14 +6,8 @@
   <div>
     <h2><%= anime.name %></h2>
     <a href="/profiles/<%= profile._id %>/anime/<%= anime._id %>  ">
-      <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
-      
+      <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>"> 
     </a>
-    <h2 hidden>Type: <%= anime.type%> </h2>
-  <h2 hidden>Episodes: <%= anime.episodes%></h2>
-  <h2 hidden>Rating: <%= anime.score%></h2>
-  <h2 hidden>Airing: <%= anime.airing%></h2>
-  <h2 hidden>Synopsis: <%= anime.synopsis%></h2>
     </div>
   <td>
     <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>?_method=DELETE" method="POST">

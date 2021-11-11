@@ -7,23 +7,35 @@
   <a href="/animeSearch/<%= anime.mal_id %> "> 
     <img src="<%= anime.image_url%>" alt="<%= anime.title %>">
   </a>
-    <h2 hidden>Type: <%= anime.type%> </h2>
-    <h2 hidden>Episodes: <%= anime.episodes%></h2>
-    <h2 hidden>Rating: <%= anime.score%></h2>
-    <h2 hidden>Airing: <%= anime.airing%></h2>
-    <h2 hidden>Synopsis: <%= anime.synopsis%></h2>
-
-<h2 hidden >Aired: <%= anime.start_date%></h2>
+  <h2 hidden >Type: <%= anime.type%> </h2>
+  <h2 hidden >Episodes: <%= anime.episodes%></h2>
+  <h2 hidden >Rating: <%= anime.score%></h2>
+  <h2 hidden >Airing: <%= anime.airing%></h2>
+  <h2 hidden >Synopsis: <%= anime.synopsis%></h2>
+  <h2 hidden >Aired: <%= anime.start_date%></h2>
+  <h2 hidden>rated: <%= anime.rated%></h2>
 
 <form action="/profiles/anime" method="POST">
-<input type="text" name="name" hidden value="<%= anime.title %>">
-<input type="text" name="imageUrl" hidden value="<%= anime.image_url %>">
-<button type="submit"> Add to watchlist</button>
+  <input type="text" name="name" hidden value="<%= anime.title %>">
+  <input type="text" name="imageUrl" hidden value="<%= anime.image_url %>">
+  <input type="text" name="type" hidden value="<%= anime.type %>">
+  <input type="text" name="episodes" hidden value="<%= anime.episodes %>">
+  <input type="text" name="score" hidden value="<%= anime.score %>">
+  <input type="text" name="airing" hidden value="<%= anime.airing %>">
+  <input type="text" name="rated" hidden value="<%= anime.rated %>">
+  <input type="text" name="synopsis" hidden value="<%= anime.synopsis %>">
+  <button type="submit"> Add to watchlist</button>
 </form>
 
 <form action="/profiles/animeComplete" method="POST">
   <input type="text" name="name" hidden value="<%= anime.title %>">
   <input type="text" name="imageUrl" hidden value="<%= anime.image_url %>">
+  <input type="text" name="type" hidden value="<%= anime.type %>">
+  <input type="text" name="episodes" hidden value="<%= anime.episodes %>">
+  <input type="text" name="score" hidden value="<%= anime.score %>">
+  <input type="text" name="airing" hidden value="<%= anime.airing %>">
+  <input type="text" name="rated" hidden value="<%= anime.rated %>">
+  <input type="text" name="synopsis" hidden value="<%= anime.synopsis %>">
 <button type="submit"> completed</button>
 </form>
 
