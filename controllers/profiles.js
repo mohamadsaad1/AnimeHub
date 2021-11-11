@@ -86,19 +86,72 @@ function createComment(req, res) {
   })
 }
 
-function create(req, res) {
+function deleteComment(req, res) {
   Profile.findById(req.params.profileId)
   .then(profile => {
-    const anime = profile.animeCompletedList.id(req.params.animeId)
-    anime.comments.push(req.body)
+    const anime = profile.animeWatchList.id(req.params.animeId)
+    anime.comments.remove({_id: req.params.commentId})
         profile.save()
-        res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+        .then(() => {
+        res.redirect(`/profiles/${req.user.profile._id}/anime/${req.params.animeId}`)
+        })
   })
   .catch(err => {
     console.log(err)
       res.redirect(`/profiles/${req.user.profile._id}/anime`)
   })
 }
+
+
+
+
+
+
+function create(req, res) {
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    const anime = profile.animeCompletedList.id(req.params.animeId)
+    anime.comments.push(req.body)
+    profile.save()
+    res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}/anime`)
+  })
+}
+
+function deleteCompletedComment(req, res) {
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    const anime = profile.animeCompletedList.id(req.params.animeId)
+    anime.comments.remove({_id: req.params.commentId})
+        profile.save()
+        .then(() => {
+        res.redirect(`/profiles/${req.user.profile._id}/animeComplete/${req.params.animeId}`)
+        })
+  })
+  .catch(err => {
+    console.log(err)
+      res.redirect(`/profiles/${req.user.profile._id}/anime`)
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,5 +210,7 @@ export{
   showAnime,
   createComment,
   showCompletedAnime,
-  create
+  create,
+  deleteComment,
+  deleteCompletedComment
 }

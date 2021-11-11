@@ -20,6 +20,10 @@ router.get("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.showCo
 router.post("/:profileId/animeComplete/:animeId", isLoggedIn, profilesCtrl.create)
 
 
+router.delete("/:profileId/anime/:animeId/:commentId", isLoggedIn, profilesCtrl.deleteComment)
+router.delete("/:profileId/animeComplete/:animeId/:commentId", isLoggedIn, profilesCtrl.deleteCompletedComment)
+
+
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {
     return next()

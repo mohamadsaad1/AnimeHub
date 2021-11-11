@@ -43,6 +43,11 @@
             <td><%= comment.createdAt.toLocaleDateString() %> </td>
             <td><%= comment.content %></td>
             <td><%= comment.rating %> </td>
+            <td>
+            <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>/<%= comment._id %>?_method=DELETE" method="POST">
+              <button style="font-weight: bold;" type="submit">Delete comment</button>
+            </form>
+          </td>
           </tr>
         <% }) %>
         <tr>
