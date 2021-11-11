@@ -12,14 +12,14 @@ owner: {type: Schema.Types.ObjectId, ref: 'Profile'}
 
 const animeSchema = new Schema({
   name: String,
-  airing: Boolean,
+  // airing: Boolean,
   synopsis: String,
   type: String,
   episodes: Number,
   score: Number,
   start_date: String,
   end_date: Number,
-  rated: String,
+  // rated: String,
   comments: [commentSchema],
   imageUrl: String,
 }, {
