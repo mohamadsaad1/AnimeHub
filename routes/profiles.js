@@ -31,6 +31,7 @@ router.delete("/:profileId/animeComplete/:animeId/:commentId", isLoggedIn, profi
 
 
 router.get("/", isLoggedIn, profilesCtrl.index)
+router.get("/", isLoggedIn, profilesCtrl.backToMain)
 
 
 function isLoggedIn(req, res, next) {

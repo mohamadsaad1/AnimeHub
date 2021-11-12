@@ -190,6 +190,9 @@ function index (req, res) {
 }
 
 
+function backToMain(req, res) {
+{res.redirect(`/`)}
+}
 
 
 
@@ -206,4 +209,5 @@ export{
   deleteComment,
   deleteCompletedComment,
   index,
+  backToMain,
 }
