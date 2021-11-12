@@ -15,6 +15,7 @@
 
 
 <h2>comments</h2>
+<% if (user) {%> 
 <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>" method="post">
     <label for="content-textarea">comment:</label>
     <textarea name="content" id="content-textarea"></textarea>
@@ -28,6 +29,7 @@
     </select>
     <button type="submit">Add Comment</button>
   </form>
+  <% } %> 
   <% if (anime.comments.length) { %>
     <table>
       <thead>
@@ -45,6 +47,9 @@
             <td><%= comment.createdAt.toLocaleDateString() %> </td>
             <td><%= comment.content %></td>
             <td><%= comment.rating %> </td>
+            <td>
+              <img src="<%= comment.owner.avatar%>" alt="comment.owner.avatar">
+            </td>
             <td>
             <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>/<%= comment._id %>?_method=DELETE" method="POST">
               <button style="font-weight: bold;" type="submit">Delete comment</button>

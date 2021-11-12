@@ -31,8 +31,11 @@ function addToCompletedList(req, res) {
 
 function showAnime(req, res) {
   Profile.findById(req.params.profileId)
+  .populate('animeWatchList.comments.owner')
   .then (profile =>{
+    console.log(profile)
   const anime = profile.animeWatchList.find(anim => anim._id.equals (req.params.animeId))
+  console.log("heeloooooooooooooooooo", anime)
   let sum = 0
   anime.comments.forEach(comment => {
     sum += comment.rating
@@ -73,6 +76,7 @@ function showCompletedAnime(req, res) {
 
 
 function createComment(req, res) {
+  req.body.owner= req.user.profile._id
   Profile.findById(req.params.profileId)
   .then(profile => {
     const anime = profile.animeWatchList.id(req.params.animeId)
@@ -108,6 +112,7 @@ function deleteComment(req, res) {
 
 
 function create(req, res) {
+  req.body.owner= req.user.profile._id
   Profile.findById(req.params.profileId)
   .then(profile => {
     const anime = profile.animeCompletedList.id(req.params.animeId)
