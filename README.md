@@ -12,7 +12,7 @@ AnimeHub is a place where you can browse your favorite anime, view it's details,
 
 ### Home
 If a person wishes to search for an anime of their liking, they will have to sign up using their google account.
- !["Sign Up"](intro.png)
+ !["Sign Up"](home.png)
 
 
 
@@ -21,7 +21,7 @@ If a person wishes to search for an anime of their liking, they will have to sig
 
 ### Spec list
  !["Spec list"](spec.png)
- 
+
 ### Add to watchlist/completedlist
 A user has the ability to add any anime while browsing to their watchlist or completed list
 
@@ -36,7 +36,7 @@ A user has the ability to add any anime while browsing to their watchlist or com
  ### Comment!
 A user can comment on an anime they've added to their list, and also has the ability to comment on other peoples anime that they've added to their list.
 
- !["Comment"](comments.png)
+ !["Comment"](comment.png)
 
 
 
