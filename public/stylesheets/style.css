@@ -34,7 +34,7 @@ height: 100vh;
 }
 
 nav {
-  background: URl("https://i.imgur.com/piUGYPw.jpg");
+  background: URl("https://c4.wallpaperflare.com/wallpaper/682/1020/918/sakura-saber-fate-grand-order-anime-girls-fate-series-wallpaper-preview.jpg");
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -43,6 +43,7 @@ nav {
   background-position:center;
   background-size: cover;
   align-items: center;
+ background-position-y:20%;
 }
 
 main {

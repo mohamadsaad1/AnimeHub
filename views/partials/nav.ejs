@@ -7,13 +7,13 @@
   <nav id="orange">
     <% if (user) { %>
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button style="font-size: xx-large; background-color:rgb(222, 129, 197);" type="submit">🚫</button>
       </a>
       <a href="/">
-        <button type="submit">Main Page</button>
+        <button  style="font-size: large;" type="submit">Main Page</button>
       </a>
-      <a href="/profiles"><button class="button1"> Profiles </button></a>
-      <a href="/profiles/<%= user.profile._id%>/anime"><button class="buttons"> My Anime</button></a>
+      <a href="/profiles"><button style="font-size: large;" class="button1"> Profiles </button></a>
+      <a href="/profiles/<%= user.profile._id%>/anime"><button style="font-size: large;" class="buttons"> My Anime</button></a>
       
       <% } else { %>
         <a href="/auth/google" class="siwg-link">
@@ -24,7 +24,7 @@
         <% } %>
         <div class="box">
           <form action="/animeSearch" method="POST">
-            <input class="input" name= "query" type="text"  placeholder="Search..." onmouseout="document.search.txt.value = ''">
+            <input style="font-size: large; " class="input" name= "query" type="text"  placeholder="Search..." onmouseout="document.search.txt.value = ''">
           </form>
         </div>
       </nav>
