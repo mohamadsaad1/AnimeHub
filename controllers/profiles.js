@@ -107,10 +107,6 @@ function deleteComment(req, res) {
 }
 
 
-
-
-
-
 function create(req, res) {
   req.body.owner= req.user.profile._id
   Profile.findById(req.params.profileId)

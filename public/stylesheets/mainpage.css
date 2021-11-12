@@ -56,7 +56,11 @@ html, body {
 }
 
 body {
-  background: #252525;
+  background: URl("luffy.jpg");
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
+  align-items: center;
 }
 
 .container {
@@ -154,7 +158,7 @@ body {
     }
     :focus ~ .search {
       right: -250px;
-      background: #151515;
+      background:white;
       z-index: 6;
     }
       ::before {
