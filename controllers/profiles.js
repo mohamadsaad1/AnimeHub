@@ -15,7 +15,6 @@ function addToWatchList(req, res) {
   })
 }
 
-
 function addToCompletedList(req, res) {
   // Find the profile
   Profile.findById(req.user.profile._id)
@@ -43,14 +42,13 @@ function showAnime(req, res) {
   console.log(anime)
     const averageCommentScore = sum / anime.comments.length
       res.render('profiles/showAnime', {
-            anime,
-            title : "title",
-            profile,
-            averageCommentScore
-        })
+        anime,
+        title : "title",
+        profile,
+        averageCommentScore
+    })
   })
 }
-
 
 function showCompletedAnime(req, res) {
   Profile.findById(req.params.profileId)
@@ -64,11 +62,11 @@ function showCompletedAnime(req, res) {
   })
     const averageCommentScore = sum / anime.comments.length
       res.render('profiles/showCompletedAnime', {
-            anime,
-            title : "title",
-            profile,
-            averageCommentScore
-        })
+        anime,
+        title : "title",
+        profile,
+        averageCommentScore
+    })
   })
 }
 
@@ -82,9 +80,9 @@ function createComment(req, res) {
   .then(profile => {
     const anime = profile.animeWatchList.id(req.params.animeId)
     anime.comments.push(req.body)
-        profile.save()
-        res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
-  })
+      profile.save()
+      res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
+    })
   .catch(err => {
     console.log(err)
       res.redirect(`/profiles/${req.params.profileId}/anime`)
@@ -96,10 +94,10 @@ function deleteComment(req, res) {
   .then(profile => {
     const anime = profile.animeWatchList.id(req.params.animeId)
     anime.comments.remove({_id: req.params.commentId})
-        profile.save()
-        .then(() => {
-        res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
-        })
+      profile.save()
+      .then(() => {
+      res.redirect(`/profiles/${req.params.profileId}/anime/${req.params.animeId}`)
+    })
   })
   .catch(err => {
     console.log(err)
