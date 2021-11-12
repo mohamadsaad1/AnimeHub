@@ -1,18 +1,17 @@
 
 <% if (!user) { %>
     <link rel="stylesheet" href="/stylesheets/siwg.css">
-    <link rel="stylesheet" href="/stylesheets/nav.css">
   <% } %>
 </head>
 <body>
   <nav id="orange">
     <% if (user) { %>
-      <a href="/profiles" class="button1 bouncy" style="animation-delay:0.14s">Plebbit</a>
+      <a href="/profiles"><button class="button1"> Profiles </button></a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
-      <a href="/profiles/<%= user.profile._id%>/anime">my anime</a>
-
+      <a href="/profiles/<%= user.profile._id%>/anime"><button class="buttons"> My Anime</button></a>
+      
       <% } else { %>
         <a href="/auth/google" class="siwg-link">
           <button type="submit" class="siwg">
@@ -20,8 +19,9 @@
           </button>
         </a>
         <% } %>
-        <form action="/animeSearch" method="POST">
-          <input  name= "query" type="text"  placeholder="search for Anime">
-          <button type="submit">search</button>
-        </form>
+        <div class="box">
+          <form action="/animeSearch" method="POST">
+            <input class="input" name= "query" type="text"  placeholder="Search..." onmouseout="document.search.txt.value = ''">
+          </form>
+        </div>
       </nav>
