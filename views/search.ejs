@@ -2,12 +2,14 @@
 <%- include('./partials/nav') %>
 <link rel="stylesheet" href="/stylesheets/search.css">
 <link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/grid.css">
 
 <div id="narutoLuffy">
+  <div class="games">
 <% animes.forEach(anime => { %>
-  <h1><%= anime.title%></h1>
+  <div>
   <a href="/animeSearch/<%= anime.mal_id %> "> 
-    <img src="<%= anime.image_url%>" alt="<%= anime.title %>">
+    <img class="gameImage" src="<%= anime.image_url%>" alt="<%= anime.title %>">
   </a>
   <h2 hidden >Type: <%= anime.type%> </h2>
   <h2 hidden >Episodes: <%= anime.episodes%></h2>
@@ -40,7 +42,10 @@
     <input type="text" name="synopsis" hidden value="<%= anime.synopsis %>">
     <button type="submit"> completed</button>
   </form>
+</div>
   <% }) %> 
+
+</div>
 </div>
 
 
