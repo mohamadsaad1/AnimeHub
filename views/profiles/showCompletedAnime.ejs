@@ -1,75 +1,81 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 <link rel="stylesheet" href="/stylesheets/comment.css">
-
 <main>
 <div class="commentSpec">
+  <img class=" imageSpec" src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
+  <div class="sideSpec">
   <h2><%= anime.name %></h2>
-    <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
     <h2>Type: <%= anime.type%> </h2>
     <h2>Episodes: <%= anime.episodes%></h2>
     <h2>Rating: <%= anime.score%></h2>
     <h2>Airing: <%= anime.airing%></h2>
     <h2 style="text-align: center; padding-left:20%;padding-right: 20%;">Synopsis: <%= anime.synopsis%></h2>
-    <h2 >rated: <%= anime.rated%></h2>
+    <h2>rated: <%= anime.rated%></h2>
+  </div>
 </div>
 
 
-<h2>comments</h2>
-<% if (user) {%> 
-<form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>" method="post">
-    <label for="content-textarea">comment:</label>
-    <textarea name="content" id="content-textarea"></textarea>
-    <label for="rating-select">Rating:</label>
-    <select name="rating" id="rating-select">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <button type="submit">Add Comment</button>
-  </form>
-  <% } %> 
-  <% if (anime.comments.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>comment</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% let total = 0 %> 
-        <% anime.comments.forEach(function(comment){ %>
-          <% total += comment.rating %> 
+
+<div class="container">
+  <% if (user) {%> 
+  <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>" method="post">
+      <label for="content-textarea">comment:</label>
+      <textarea name="content" id="content-textarea"></textarea>
+      <label for="rating-select">Rating:</label>
+      <select name="rating" id="rating-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button type="submit">Add Comment</button>
+    </form>
+    <% } %> 
+    <% if (anime.comments.length) { %>
+      <table>
+        <thead>
+          <div class="date">
           <tr>
-            <td><%= comment.createdAt.toLocaleDateString() %> </td>
-            <td><%= comment.content %></td>
-            <td><%= comment.rating %> </td>
+            <th>Date</th>
+            <th>comment</th>
+            <th>Rating</th>
+          </tr>
+        </div>
+        </thead>
+        <tbody>
+          <% let total = 0 %> 
+          <% anime.comments.forEach(function(comment){ %>
+            <% total += comment.rating %> 
+            <div class="comments" >
+            <tr>
+              <td><%= comment.createdAt.toLocaleDateString() %> </td>
+              <td><%= comment.content %></td>
+              <td><%= comment.rating %> </td>
+              <td>
+                <img style="width: 50px;" src="<%= comment.owner.avatar%>" alt="comment.owner.avatar">
+              </td>
+              <td>
+                <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button style="font-weight: bold; font-size: large;" type="submit">🆇</button>
+                </form>
+              </td>
+            </tr>
+          </div>
+          <% }) %>
+          <tr>
+            <td colspan="2"></td>
             <td>
-              <img style="width: 50px;" src="<%= comment.owner.avatar%>" alt="comment.owner.avatar">
-            </td>
-          </td>
-            <td>
-              <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>/<%= comment._id %>?_method=DELETE" method="POST">
-                <button style="font-weight: bold; font-size: large;" type="submit">🆇</button>
-              </form>
+              <strong><%= averageCommentScore %></strong>
             </td>
           </tr>
-        <% }) %>
-        <tr>
-          <td colspan="2"></td>
-          <td>
-            <strong><%= averageCommentScore %></strong>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h3>No comments Yet</h3>
-  <% } %>
-</main>
-
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3>No comments Yet</h3>
+    <% } %>
+  </div>
+  </main>
+  
 <%- include('../partials/footer') %>
