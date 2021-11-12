@@ -1,11 +1,14 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
+<link rel="stylesheet" href="/stylesheets/mainpage.css">
 
+
+<div class="welcome">
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>ようこそ <%= user ? user.profile.name : "Weeb" %></h1>
   <% if (user?.profile.avatar) { %>
-    <div>
-      <img 
+    <div class="apple">
+      <img class="banana"
         src="<%= user.profile.avatar %>" 
         alt="<%= user.profile.name %> avatar"
       >
@@ -13,9 +16,12 @@
   <% } %>
 </main>
 
+
+<div class="container">
 <form action="/animeSearch" method="POST">
-  <input  name= "query" type="text"  placeholder="search for Anime">
-  <button type="submit">search</button>
+  <input name= "query" type="text"  placeholder="Search...">
+  <div class="search"></div>
 </form>
+</div>
 
 <%- include('./partials/footer') %>

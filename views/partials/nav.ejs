@@ -1,11 +1,13 @@
-  <% if (!user) { %>
+
+<% if (!user) { %>
     <link rel="stylesheet" href="/stylesheets/siwg.css">
+    <link rel="stylesheet" href="/stylesheets/nav.css">
   <% } %>
 </head>
 <body>
-  <nav>
+  <nav id="orange">
     <% if (user) { %>
-      <a href="/profiles">Profiles</a>
+      <a href="/profiles" class="button1 bouncy" style="animation-delay:0.14s">Plebbit</a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
