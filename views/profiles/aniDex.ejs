@@ -1,37 +1,42 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 <link rel="stylesheet" href="/stylesheets/style.css">
-
+<link rel="stylesheet" href="/stylesheets/grid.css">
 
 <h1>Watch List</h1>
+<div class="games">
 <% profile.animeWatchList.forEach(anime => { %>
   <div>
-    <h2><%= anime.name %></h2>
     <a href="/profiles/<%= profile._id %>/anime/<%= anime._id %>  ">
-      <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>"> 
+      <img class="gameImage" src="<%= anime.imageUrl %>" alt="<%= anime.name %>"> 
     </a>
-    </div>
+  
   <td>
     <form action="/profiles/<%= profile._id %>/anime/<%= anime._id %>?_method=DELETE" method="POST">
       <button type="submit">Remove Anime</button>
     </form>
   </td>
+</div>
 <% }) %>
+</div>
+
 
 <h1>Completed List</h1>
+<div class="games">
 <% profile.animeCompletedList.forEach(anime => { %>
   <div>
-    <h2><%= anime.title %></h2>
     <a href="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>  ">
-      <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
+      <img class="gameImage" src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
       </a>
-  </div>
+ 
   <td>
       <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>?_method=DELETE" method="POST">
         <button type="submit">Remove Anime</button>
       </form>
 </td>
+</div>
 <% }) %>
+</div>
 
 
 <%- include('../partials/footer') %>
