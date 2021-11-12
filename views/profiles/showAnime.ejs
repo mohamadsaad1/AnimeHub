@@ -3,15 +3,16 @@
 <link rel="stylesheet" href="/stylesheets/comment.css">
 <main>
 <div class="commentSpec">
+  <img class=" imageSpec" src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
+  <div class="sideSpec">
   <h2><%= anime.name %></h2>
-    <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
     <h2>Type: <%= anime.type%> </h2>
     <h2>Episodes: <%= anime.episodes%></h2>
     <h2>Rating: <%= anime.score%></h2>
     <h2>Airing: <%= anime.airing%></h2>
     <h2 style="text-align: center; padding-left:20%;padding-right: 20%;">Synopsis: <%= anime.synopsis%></h2>
     <h2>rated: <%= anime.rated%></h2>
-    
+  </div>
 </div>
 
 
