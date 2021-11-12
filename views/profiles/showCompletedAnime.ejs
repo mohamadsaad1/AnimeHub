@@ -1,19 +1,22 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
+<link rel="stylesheet" href="/stylesheets/comment.css">
+
 <main>
-<div>
+<div class="commentSpec">
   <h2><%= anime.name %></h2>
     <img src="<%= anime.imageUrl %>" alt="<%= anime.name %>">
     <h2>Type: <%= anime.type%> </h2>
     <h2>Episodes: <%= anime.episodes%></h2>
     <h2>Rating: <%= anime.score%></h2>
     <h2>Airing: <%= anime.airing%></h2>
-    <h2>Synopsis: <%= anime.synopsis%></h2>
-    <h2>rated: <%= anime.rated%></h2>
+    <h2 style="text-align: center; padding-left:20%;padding-right: 20%;">Synopsis: <%= anime.synopsis%></h2>
+    <h2 >rated: <%= anime.rated%></h2>
 </div>
 
 
 <h2>comments</h2>
+<% if (user) {%> 
 <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>" method="post">
     <label for="content-textarea">comment:</label>
     <textarea name="content" id="content-textarea"></textarea>
@@ -27,6 +30,7 @@
     </select>
     <button type="submit">Add Comment</button>
   </form>
+  <% } %> 
   <% if (anime.comments.length) { %>
     <table>
       <thead>
@@ -45,8 +49,12 @@
             <td><%= comment.content %></td>
             <td><%= comment.rating %> </td>
             <td>
+              <img style="width: 50px;" src="<%= comment.owner.avatar%>" alt="comment.owner.avatar">
+            </td>
+          </td>
+            <td>
               <form action="/profiles/<%= profile._id %>/animeComplete/<%= anime._id %>/<%= comment._id %>?_method=DELETE" method="POST">
-                <button style="font-weight: bold;" type="submit">Delete comment</button>
+                <button style="font-weight: bold; font-size: large;" type="submit">🆇</button>
               </form>
             </td>
           </tr>

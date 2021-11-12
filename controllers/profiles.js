@@ -54,6 +54,7 @@ function showAnime(req, res) {
 
 function showCompletedAnime(req, res) {
   Profile.findById(req.params.profileId)
+  .populate('animeCompletedList.comments.owner')
   .then (profile =>{
   const anime = profile.animeCompletedList.find(anim => anim._id.equals (req.params.animeId))
   let sum = 0
