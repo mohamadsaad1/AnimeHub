@@ -1,6 +1,8 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
+<link rel="stylesheet" href="/stylesheets/show.css">
 
+<div class="info">
 <h1><%= anime.title %></h1>
 <img src="<%= anime.image_url %>" alt="<%= anime.name %>">
 
@@ -9,6 +11,6 @@
 <h2>Rating: <%= anime.score%></h2>
 <h2>Airing: <%= anime.airing%></h2>
 <h2>Synopsis: <%= anime.synopsis%></h2>
-
+</div>
 
 <%- include('./partials/footer') %>

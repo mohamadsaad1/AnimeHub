@@ -6,10 +6,10 @@
 <body>
   <nav id="orange">
     <% if (user) { %>
-      <a href="/profiles"><button class="button1"> Profiles </button></a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
+      <a href="/profiles"><button class="button1"> Profiles </button></a>
       <a href="/profiles/<%= user.profile._id%>/anime"><button class="buttons"> My Anime</button></a>
       
       <% } else { %>

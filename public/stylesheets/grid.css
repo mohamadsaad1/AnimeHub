@@ -4,6 +4,16 @@ main {
   align-items: center;
 }
 
+body{
+  
+  background: URl("luffy.jpg");
+    /* #252525 */
+
+    background-position:center;
+    background-size: cover;
+    align-items: center;
+}
+
 .games {
   display: flex;
   margin-top: 10px;
