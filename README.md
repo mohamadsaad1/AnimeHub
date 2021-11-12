@@ -31,7 +31,7 @@ A user has the ability to add any anime while browsing to their watchlist or com
  ### View other profiles
  A user can view all the profiles that have signed up so far, and view their watch/completed list.
 
- !["Profiles"](profiles.png)
+ !["Profiles"](profilesgit.png)
 
  ### Comment!
 A user can comment on an anime they've added to their list, and also has the ability to comment on other peoples anime that they've added to their list.
